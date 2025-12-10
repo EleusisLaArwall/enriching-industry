@@ -1,0 +1,55 @@
+Credits
+
+This file specifies assets used in Enriching Industry from other sources.
+
+---------------------------------------------------------------------------------------------------
+
+Entity for:
+- chemical plant
+Icon for
+- water
+
+Creators: [Wube Software](https://www.factorio.com/)
+Source: [factorio](https://www.factorio.com/)
+License: [Wube's EULA](https://www.factorio.com/terms-of-service)
+Changes: Yes. Graphics combined, resized and rearranged.
+
+---------------------------------------------------------------------------------------------------
+
+Code for api is a copy of Crushing Industry's api with slight adjustments.
+
+Creators: [SafTheLamb](https://github.com/SafTheLamb)
+Source: [Crushing Industry API](https://github.com/SafTheLamb/fm-crushing-industry/blob/main/api.lua)
+License: [MIT](https://mit-license.org/)
+Changes: Yes.
+
+---------------------------------------------------------------------------------------------------
+
+Icon for:
+- concrete mix
+- tailing slurry
+- sulfuric iron solution
+- sulfuric copper solution
+
+Creators: [malcolmriley](https://github.com/malcolmriley)
+Source: [Unused Renders](https://github.com/malcolmriley/unused-renders)
+License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Changes: Yes. Icon combined, recolored, resized and rearranged.
+
+---------------------------------------------------------------------------------------------------
+
+Icon for:
+- enriched-*
+- quartz
+
+Made by EleusisLaArwall based on [Malcolm Riley's fabulous Blender tutorials](https://github.com/malcolmriley/unused-renders/wiki)
+License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+---------------------------------------------------------------------------------------------------
+
+My personal thanks to:
+- the entire Wube team for this wonderful game called Factorio.
+- SafTheLamb and S6X for Crushing Industry.
+- SafTheLamb for general help & support with this mod and other stuff.
+- Malcolm Riley for generously allowing others to use these great assets and for making the Blender tutorials.
+- Snouz for the [centralized graphics catalog](https://github.com/snouz/factorio_free_graphics_for_modders), that made my life much easier.

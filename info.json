@@ -1,0 +1,16 @@
+{
+	"name": "enriching-industry",
+	"version": "0.0.1",
+	"title": "Enriching industry",
+	"author": "EleusisLaArwall",
+	"homepage": "",
+	"description": "Add-on for Crushing Industry.",
+	"factorio_version": "2.0",
+	"dependencies": [
+		"base >= 1.0",
+		"? space-age",
+		"? aai-industry",
+		"crushing-industry"
+	]
+}
+
