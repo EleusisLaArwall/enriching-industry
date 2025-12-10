@@ -287,7 +287,7 @@ if ci_ore_crushing then
 			auto_recycle = false,
 	--		hide_from_player_crafting = settings.startup["crushing-industry-hide-player-crafting"].value,
 			hide_from_player_crafting = ci_hide_player_crafting == true,
-			energy_required = 1.6,
+			energy_required = 3.2,
 			ingredients = {{type="item", name="ei-enriched-iron-ore", amount=1}},
 			results = {{type="item", name="iron-plate", amount=1}},
 			main_product = "iron-plate",
@@ -308,7 +308,7 @@ if ci_ore_crushing then
 			auto_recycle = false,
 	--		hide_from_player_crafting = settings.startup["crushing-industry-hide-player-crafting"].value,
 			hide_from_player_crafting = ci_hide_player_crafting == true,
-			energy_required = 1.6,
+			energy_required = 3.2,
 			ingredients = {{type="item", name="ei-enriched-copper-ore", amount=1}},
 			results = {{type="item", name="copper-plate", amount=1}},
 			main_product = "copper-plate",
@@ -376,7 +376,7 @@ if ci_glass or ci_ore_crushing or mods["aai-industry"] then
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			energy_required = 1.2,
+			energy_required = 1,
 			ingredients = {
 				{type="fluid", name="ei-tailing-slurry", amount=100}
 			},
@@ -415,7 +415,7 @@ if ci_glass or ci_ore_crushing or mods["aai-industry"] then
 				enabled = false,
 				allow_productivity = true,
 				auto_recycle = false,
-				energy_required = 2.4,
+				energy_required = 1,
 				ingredients = {
 					{type="item", name="sand", amount=2},
 					{type="fluid", name="ei-tailing-slurry", amount=100}
