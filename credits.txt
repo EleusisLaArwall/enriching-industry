@@ -16,7 +16,7 @@ Changes: Yes. Graphics combined, resized and rearranged.
 
 ---------------------------------------------------------------------------------------------------
 
-Code for api is a copy of Crushing Industry's api with slight adjustments.
+Code in api.lua is a copy of Crushing Industry's api with slight adjustments. Permission has been granted by SafTheLamb.
 
 Creators: [SafTheLamb](https://github.com/SafTheLamb)
 Source: [Crushing Industry API](https://github.com/SafTheLamb/fm-crushing-industry/blob/main/api.lua)
