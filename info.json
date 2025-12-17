@@ -10,7 +10,8 @@
 		"base >= 1.0",
 		"? space-age",
 		"? aai-industry",
-		"crushing-industry"
+		"crushing-industry",
+		"? molten-tungsten"
 	]
 }
 
