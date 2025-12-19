@@ -4,7 +4,7 @@
 	"title": "Enriching Industry",
 	"author": "EleusisLaArwall",
 	"homepage": "",
-	"description": "Add-on for Crushing Industry.",
+	"description": "Adds further ore enrichment to Crushing Industry for even more yield at the cost of increased complexity. Some might call it win-win.",
 	"factorio_version": "2.0",
 	"dependencies": [
 		"base >= 1.0",
