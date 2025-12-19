@@ -1,16 +1,76 @@
 local util = require("__enriching-industry__.api")
 
-local ei_washing_extra = settings.startup["ei-washing-extra"].value * 0.01
-local ei_quartz_extra = settings.startup["ei-quartz-extra"].value * 0.01
-local ei_leaching_amount = settings.startup["ei-leaching-extra"].value * 0.1 + 10
-local ei_recrystall_extra = settings.startup["ei-recrystall-extra"].value * 0.01
---local ei_recrystall_byprod_extra = settings.startup["ei-recrystall-byprod-extra"].value * 0.01
+-- Enriching Industry Mod Settings
+-- Direct bonus
+local ei_extra_selection = settings.startup["ei-extra-selection"].value
+local ei_quartz_extra = {}
+local ei_washing_extra = {}
+local ei_leaching_amount = {}
+local ei_recrystall_extra = {}
+-- Primary precursor bonus
+local ei_primprec_extra_selection = settings.startup["ei-primprec-extra-selection"].value
+local ei_primprec_productivity = settings.startup["ei-primprec-productivity"].value
+local ei_primprec_quartz_extra = {}
+local ei_primprec_washing_extra = {}
+local ei_primprec_leaching_extra = {}
+-- Secondary precursor bonus
+local ei_secoprec_extra_selection = settings.startup["ei-secoprec-extra-selection"].value
+local ei_secoprec_productivity = settings.startup["ei-secoprec-productivity"].value
+local ei_secoprec_quartz_extra = {}
+local ei_secoprec_washing_extra = {}
+local ei_secoprec_leaching_extra = {}
 
 -- Crushing Industry Mod Settings
 local ci_glass = settings.startup["crushing-industry-glass"].value
 local ci_ore_crushing = settings.startup["crushing-industry-ore"].value
 local ci_concrete_mix = settings.startup["crushing-industry-concrete-mix"].value
 local ci_hide_player_crafting = settings.startup["crushing-industry-hide-player-crafting"].value
+
+-- Selection or Full Control
+-- Direct bonus
+if ei_extra_selection == "custom" then
+	ei_quartz_extra = settings.startup["ei-quartz-extra"].value * 0.01
+	ei_washing_extra = settings.startup["ei-washing-extra"].value * 0.01
+	ei_leaching_amount = settings.startup["ei-leaching-extra"].value * 0.1 + 10
+	ei_recrystall_extra = settings.startup["ei-recrystall-extra"].value * 0.01
+	--ei_recrystall_byprod_extra = settings.startup["ei-recrystall-byprod-extra"].value * 0.01
+else
+	ei_extra_selection = tonumber(ei_extra_selection) * 0.01
+	ei_quartz_extra = ei_extra_selection
+	ei_washing_extra = ei_extra_selection
+	ei_leaching_amount = ei_extra_selection * 10 + 10
+	ei_recrystall_extra = ei_extra_selection
+end
+
+-- Primary precursor bonus
+if ei_primprec_extra_selection == "custom" then
+	ei_primprec_quartz_extra = settings.startup["ei-primprec-quartz-extra"].value * 0.01
+	ei_primprec_washing_extra = settings.startup["ei-primprec-washing-extra"].value * 0.01
+	ei_primprec_leaching_extra = settings.startup["ei-primprec-leaching-extra"].value * 0.01
+else
+	ei_primprec_extra_selection = tonumber(ei_primprec_extra_selection) * 0.01
+	ei_primprec_quartz_extra = ei_primprec_extra_selection
+	ei_primprec_washing_extra = ei_primprec_extra_selection
+	ei_primprec_leaching_extra = ei_primprec_extra_selection
+end
+-- Disable productivity if any primary precursor > 10%
+if ei_primprec_quartz_extra > 0.1 or ei_primprec_washing_extra > 0.1 or ei_primprec_leaching_extra > 0.1 then
+	ei_primprec_productivity = false
+end
+
+-- Secondary precursor bonus
+if ei_secoprec_extra_selection == "custom" then
+	ei_secoprec_quartz_extra = settings.startup["ei-secoprec-quartz-extra"].value * 0.01
+	ei_secoprec_washing_extra = settings.startup["ei-secoprec-washing-extra"].value * 0.01
+else
+	ei_secoprec_extra_selection = tonumber(ei_secoprec_extra_selection) * 0.01
+	ei_secoprec_quartz_extra = ei_secoprec_extra_selection
+	ei_secoprec_washing_extra = ei_secoprec_extra_selection
+end
+-- Disable productivity if any secondary precursor > 10%
+if ei_secoprec_quartz_extra > 0.1 or ei_secoprec_washing_extra > 0.1 then
+	ei_secoprec_productivity = false
+end
 
 -- If CI-glass is false, only do for AAI if K2 is not present
 if ci_glass or (mods["aai-industry"] and not mods["Krastorio2"]) then
@@ -34,8 +94,10 @@ if ci_glass or (mods["aai-industry"] and not mods["Krastorio2"]) then
 			results = {
 				{type="item", name="ei-quartz", amount=1, extra_count_fraction=ei_quartz_extra},
 				{type="fluid", name="ei-tailing-slurry", amount=10, ignored_by_productivity=1000},
-				EnrichingIndustry.make_washing_byproduct("sand", EnrichingIndustry.STANDARD_BYPRODUCT),
-				EnrichingIndustry.make_washing_byproduct("stone", EnrichingIndustry.FLAVOR_BYPRODUCT),
+				EnrichingIndustry.make_washing_byproduct("sand", ei_primprec_quartz_extra, 1, ei_primprec_productivity),
+--				EnrichingIndustry.make_washing_byproduct("sand", EnrichingIndustry.STANDARD_BYPRODUCT),
+				EnrichingIndustry.make_washing_byproduct("stone", ei_secoprec_quartz_extra, 1, ei_secoprec_productivity),
+--				EnrichingIndustry.make_washing_byproduct("stone", EnrichingIndustry.FLAVOR_BYPRODUCT),
 			},
 			main_product = "ei-quartz",
 			crafting_machine_tint =
@@ -92,8 +154,8 @@ if ci_ore_crushing then
 			results = {
 				{type="item", name="ei-enriched-iron-ore", amount=1, extra_count_fraction=ei_washing_extra},
 				{type="fluid", name="ei-tailing-slurry", amount=10, ignored_by_productivity=1000},
-				EnrichingIndustry.make_washing_byproduct("crushed-iron-ore", EnrichingIndustry.STANDARD_BYPRODUCT),
-				EnrichingIndustry.make_washing_byproduct("iron-ore", EnrichingIndustry.FLAVOR_BYPRODUCT),
+				EnrichingIndustry.make_washing_byproduct("crushed-iron-ore", ei_primprec_washing_extra, 1, ei_primprec_productivity),
+				EnrichingIndustry.make_washing_byproduct("iron-ore", ei_secoprec_washing_extra, 1, ei_secoprec_productivity),
 			},
 			main_product = "ei-enriched-iron-ore",
 			crafting_machine_tint =
@@ -129,8 +191,8 @@ if ci_ore_crushing then
 			results = {
 				{type="item", name="ei-enriched-copper-ore", amount=1, extra_count_fraction=ei_washing_extra},
 				{type="fluid", name="ei-tailing-slurry", amount=10, ignored_by_productivity=1000},
-				EnrichingIndustry.make_washing_byproduct("crushed-copper-ore", EnrichingIndustry.STANDARD_BYPRODUCT),
-				EnrichingIndustry.make_washing_byproduct("copper-ore", EnrichingIndustry.FLAVOR_BYPRODUCT),
+				EnrichingIndustry.make_washing_byproduct("crushed-copper-ore", ei_primprec_washing_extra, 1, ei_primprec_productivity),
+				EnrichingIndustry.make_washing_byproduct("copper-ore", ei_secoprec_washing_extra, 1, ei_secoprec_productivity),
 			},
 			main_product = "ei-enriched-copper-ore",
 			crafting_machine_tint =
@@ -164,6 +226,7 @@ if ci_ore_crushing then
 			},
 			results = {
 				{type="fluid", name="ei-sulfuric-iron-solution", amount=ei_leaching_amount},
+				EnrichingIndustry.make_washing_byproduct("crushed-iron-ore", ei_primprec_washing_extra, 1, ei_primprec_productivity),
 	--			EnrichingIndustry.make_washing_byproduct("sand", EnrichingIndustry.COMMON_BYPRODUCT),
 	--			EnrichingIndustry.make_washing_byproduct("stone"),
 			},
@@ -197,6 +260,7 @@ if ci_ore_crushing then
 			},
 			results = {
 				{type="fluid", name="ei-sulfuric-copper-solution", amount=ei_leaching_amount},
+				EnrichingIndustry.make_washing_byproduct("crushed-copper-ore", ei_primprec_washing_extra, 1, ei_primprec_productivity),
 	--			EnrichingIndustry.make_washing_byproduct("sand", EnrichingIndustry.COMMON_BYPRODUCT),
 	--			EnrichingIndustry.make_washing_byproduct("stone"),
 			},
@@ -463,8 +527,8 @@ if mods["space-age"] then
 				results = {
 					{type="item", name="ei-enriched-tungsten-ore", amount=1, extra_count_fraction=ei_tungsten_extra},
 					{type="fluid", name="ei-tailing-slurry", amount=10, ignored_by_productivity=1000},
-					EnrichingIndustry.make_washing_byproduct("crushed-tungsten-ore"),
-					EnrichingIndustry.make_washing_byproduct("tungsten-ore", EnrichingIndustry.FLAVOR_BYPRODUCT),
+					EnrichingIndustry.make_washing_byproduct("crushed-tungsten-ore", ei_primprec_washing_extra, 1, ei_primprec_productivity),
+					EnrichingIndustry.make_washing_byproduct("tungsten-ore", ei_secoprec_washing_extra, 1, ei_secoprec_productivity),
 				},
 				main_product = "ei-enriched-tungsten-ore",
 				crafting_machine_tint =
@@ -516,8 +580,8 @@ if mods["space-age"] then
 				},
 				results = {
 					{type="item", name="ei-enriched-holmium", amount=1, extra_count_fraction=ei_holmium_extra},
-					EnrichingIndustry.make_washing_byproduct("holmium-powder"),
-					EnrichingIndustry.make_washing_byproduct("holmium-ore", EnrichingIndustry.FLAVOR_BYPRODUCT),
+					EnrichingIndustry.make_washing_byproduct("holmium-powder", ei_primprec_washing_extra, 1, ei_primprec_productivity),
+					EnrichingIndustry.make_washing_byproduct("holmium-ore", ei_secoprec_washing_extra, 1, ei_secoprec_productivity),
 				},
 				main_product = "ei-enriched-holmium",
 				crafting_machine_tint =
