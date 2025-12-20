@@ -4,7 +4,7 @@ data:extend({
 		type = "string-setting",
 		name = "ei-selection-bonus-direct",
 		setting_type = "startup",
-		default_value = "10",
+		default_value = "50",
 		allowed_values = { "custom", "0", "10", "25", "50", "75", "100" },
 		order = "c[settings]-c-f"
 	},
@@ -12,7 +12,7 @@ data:extend({
 		type = "string-setting",
 		name = "ei-selection-bonus-primprec",
 		setting_type = "startup",
-		default_value = "10",
+		default_value = "5",
 		allowed_values = { "custom", "0", "1", "2", "5", "10", "25", "50"},
 		order = "c[settings]-f"
 	},
@@ -20,7 +20,7 @@ data:extend({
 		type = "string-setting",
 		name = "ei-selection-bonus-secoprec",
 		setting_type = "startup",
-		default_value = "1",
+		default_value = "2",
 		allowed_values = { "custom", "0", "1", "2", "5", "10", "25"},
 		order = "c[settings]-i-c"
 	},
@@ -28,7 +28,7 @@ data:extend({
 		type = "string-setting",
 		name = "ei-selection-byproduct-metal",
 		setting_type = "startup",
-		default_value = "10",
+		default_value = "50",
 		allowed_values = { "custom", "0", "10", "25", "50", "75", "100" },
 		order = "c[settings]-l"
 	},
@@ -37,7 +37,7 @@ data:extend({
 		type = "bool-setting",
 		name = "ei-ci-overwrite",
 		setting_type = "startup",
-		default_value = true,
+		default_value = false,
 		order = "c[settings]-c-c"
 	},
 	{
@@ -86,7 +86,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-secoprec-ssgq",
 		setting_type = "startup",
-		default_value = 1,
+		default_value = 2,
 		minimum_value = 0,
 		maximum_value = 25,
 		order = "x[fc-settings]-c[ssgq]-f[wash]-i"
@@ -145,7 +145,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-secoprec",
 		setting_type = "startup",
-		default_value = 1,
+		default_value = 2,
 		minimum_value = 0,
 		maximum_value = 25,
 		order = "x[fc-settings]-f[ore]-f[wash]-g"
@@ -157,7 +157,7 @@ data:extend({
 		setting_type = "startup",
 		default_value = 5,
 		minimum_value = 1,
-		maximum_value = 10,
+		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-i[leaching]-b"
 	},
 	{
