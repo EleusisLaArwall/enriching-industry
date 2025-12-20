@@ -37,11 +37,8 @@ local ci_byproducts = settings.startup["crushing-industry-byproducts"].value
 -- Direct bonus
 if ei_selection_bonus_direct == "custom" then
 	ei_crush_bonus_direct = settings.startup["ei-crush-bonus-direct"].value * 0.01
-	ei_recry_byprod = settings.startup["ei-recry-byprod"].value * 0.01
 else
-	ei_selection_bonus_direct = tonumber(ei_selection_bonus_direct) * 0.01
-	ei_crush_bonus_direct = ei_selection_bonus_direct
-	ei_recry_byprod = tonumber(ei_selection_byproduct_metal) * 0.01
+	ei_crush_bonus_direct = tonumber(ei_selection_bonus_direct) * 0.01
 end
 
 -- Primary precursor bonus
@@ -56,6 +53,13 @@ else
 	ei_crush_bonus_precursor = ei_selection_bonus_primprec
 --	ei_wash_bonus_primprec = ei_selection_bonus_primprec
 --	ei_leach_bonus_primprec = ei_selection_bonus_primprec
+end
+
+-- Metal by-product
+if ei_selection_byproduct_metal == "custom" then
+	ei_recry_byprod = settings.startup["ei-recry-byprod"].value * 0.01
+else
+	ei_recry_byprod = tonumber(ei_selection_byproduct_metal) * 0.01
 end
 
 -- ?????????????????????????????????????????????????????????????????
