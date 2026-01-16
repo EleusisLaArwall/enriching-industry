@@ -1,5 +1,15 @@
+local ei_defaults = require ("ei-defaults")
+
 data:extend({
 -- ================================================== Selection
+	{
+		type = "string-setting",
+		name = "ei-selection-setup",
+		setting_type = "startup",
+		default_value = "ci",
+		allowed_values = { "custom", "ci", "small", "prec" },
+		order = "c[settings]-c-e"
+	},
 	{
 		type = "string-setting",
 		name = "ei-selection-bonus-direct",
@@ -37,14 +47,16 @@ data:extend({
 		type = "bool-setting",
 		name = "ei-ci-overwrite",
 		setting_type = "startup",
-		default_value = false,
+--		default_value = false,
+		default_value = ei_defaults.ei_ci_overwrite,
 		order = "c[settings]-c-c"
 	},
 	{
 		type = "bool-setting",
 		name = "ei-productivity-precursor",--	TODO: Enable productivity for CI primprec!
 		setting_type = "startup",
-		default_value = false,
+--		default_value = false,
+		default_value = ei_defaults.ei_productivity_precursor,
 		order = "c[settings]-i-f"
 	},
 -- 	{
@@ -57,36 +69,40 @@ data:extend({
 -- ================================================== Stone, Sand, Glass & Quartz
 	{
 		type = "int-setting",
-		name = "ei-crush-bonus-precursor-ssgq",
+		name = "ei-stone-crush-bonus-precursor",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_stone_crush_bonus_precursor * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-c[ssgq]-c[crush]-b"
 	},
 	{
 		type = "int-setting",
-		name = "ei-wash-bonus-direct-ssgq",
+		name = "ei-stone-wash-bonus-direct",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_stone_wash_bonus_direct * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-c[ssgq]-f[wash]-c"
 	},
 	{
 		type = "int-setting",
-		name = "ei-wash-bonus-primprec-ssgq",
+		name = "ei-stone-wash-bonus-primprec",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_stone_wash_bonus_primprec * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-c[ssgq]-f[wash]-f"
 	},
 	{
 		type = "int-setting",
-		name = "ei-wash-bonus-secoprec-ssgq",
+		name = "ei-stone-wash-bonus-secoprec",
 		setting_type = "startup",
-		default_value = 2,
+--		default_value = 2,
+		default_value = ei_defaults.ei_stone_wash_bonus_secoprec * 100,
 		minimum_value = 0,
 		maximum_value = 25,
 		order = "x[fc-settings]-c[ssgq]-f[wash]-i"
@@ -97,7 +113,8 @@ data:extend({
 		name = "ei-crush-bonus-direct",
 --		name = "ei-crush-extra",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_crush_bonus_direct * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-c[crush]-c"
@@ -107,7 +124,8 @@ data:extend({
 		name = "ei-crush-bonus-precursor",
 --		name = "ei-primprec-crush-extra",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_crush_bonus_precursor * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-f[ore]-c[crush]-f"
@@ -117,7 +135,8 @@ data:extend({
 		name = "ei-crush-byprod-sand",
 --		name = "ei-byproduct-crush-extra",
 		setting_type = "startup",
-		default_value = 2,
+--		default_value = 2,
+		default_value = ei_defaults.ei_crush_byprod_sand * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-f[ore]-c[crush]-i"
@@ -127,7 +146,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-direct",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_wash_bonus_direct * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-f[wash]-c"
@@ -136,7 +156,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-primprec",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_wash_bonus_primprec * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-f[ore]-f[wash]-f"
@@ -145,7 +166,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-secoprec",
 		setting_type = "startup",
-		default_value = 2,
+--		default_value = 2,
+		default_value = ei_defaults.ei_wash_bonus_secoprec * 100,
 		minimum_value = 0,
 		maximum_value = 25,
 		order = "x[fc-settings]-f[ore]-f[wash]-g"
@@ -155,7 +177,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-sulfuric-acid",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_leach_sulfuric_acid,
 		minimum_value = 1,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-i[leaching]-b"
@@ -164,7 +187,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-bonus-direct",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_leach_bonus_direct * 10,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-i[leaching]-c"
@@ -173,7 +197,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-bonus-primprec",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_leach_bonus_primprec * 100,
 		minimum_value = 0,
 		maximum_value = 50,
 		order = "x[fc-settings]-f[ore]-i[leaching]-f"
@@ -183,7 +208,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-recry-bonus-direct",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_recry_bonus_direct * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-l[recrystall]-c"
@@ -192,7 +218,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-recry-byprod",
 		setting_type = "startup",
-		default_value = 50,
+--		default_value = 50,
+		default_value = ei_defaults.ei_recry_byprod * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-l[recrystall]-d"
@@ -201,7 +228,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-recrystall",
 		setting_type = "startup",
-		default_value = 35,
+--		default_value = 35,
+		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_recrystall * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-f[ore]-l[recrystall]-i"
@@ -211,7 +239,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-tailfilt",
 		setting_type = "startup",
-		default_value = 2,
+--		default_value = 2,
+		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_tailfilt * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-u[tailing-slurry]-c[sulfur]-c"
@@ -220,7 +249,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-tailrepr",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_tailrepr * 100,
 		minimum_value = 0,
 		maximum_value = 100,
 		order = "x[fc-settings]-u[tailing-slurry]-c[sulfur]-f"
@@ -229,7 +259,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sand",
 		setting_type = "startup",
-		default_value = 5,
+--		default_value = 5,
+		default_value = ei_defaults.ei_nonmetal_byproduct_sand * 100,
 		minimum_value = 0,
 		maximum_value = 10,
 		order = "x[fc-settings]-u[tailing-slurry]-f[sand]"
@@ -238,7 +269,8 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-stone",
 		setting_type = "startup",
-		default_value = 2,
+--		default_value = 2,
+		default_value = ei_defaults.ei_nonmetal_byproduct_stone * 100,
 		minimum_value = 0,
 		maximum_value = 10,
 		order = "x[fc-settings]-u[tailing-slurry]-g[stone]"
