@@ -1,5 +1,5 @@
 local util = require("__enriching-industry__.api")
-local ei_defaults = require ("ei-defaults")
+--local ei_defaults = require ("ei-defaults")
 local ei_settings = require ("ei-settings")
 
 -- Crushing Industry Mod Settings
@@ -82,8 +82,9 @@ local ci_hide_player_crafting = settings.startup["crushing-industry-hide-player-
 -- -- 	ei_productivity_precursor = false
 -- -- end
 
--- If CI-glass is false, only do for AAI if K2 is not present
-if ci_glass or (mods["aai-industry"] and not mods["Krastorio2"]) then
+-- If CI-glass is false and SA is false, only do for AAI if K2 is not present
+--if ci_glass or mods["space-age"] or (mods["aai-industry"] and not mods["Krastorio2"]) then
+if ei_settings.ei_quartz_enabled then
 	data:extend(
 	{
 		{
@@ -117,7 +118,15 @@ if ci_glass or (mods["aai-industry"] and not mods["Krastorio2"]) then
 				tertiary = {r = 0.75, g = 0.95, b = 1.00, a = 1.000},--	#BFEFFF	light blue1
 				quaternary = {r = 1.00, g = 1.00, b = 0.67, a = 1.000}, --	#FFFFAA	popcornyellow
 			}
-		},
+		}
+	}
+	)
+end
+-- If CI-glass is false, only do for AAI if K2 is not present
+--if ci_glass or (mods["aai-industry"] and not mods["Krastorio2"]) then
+if ei_settings.ei_glass_enabled then
+	data:extend(
+	{
 		{
 			type = "recipe",
 			name = "ei-quartz-smelting",
@@ -433,7 +442,7 @@ if ci_ore_crushing then
 	)
 end
 
-if ci_glass or ci_ore_crushing or mods["aai-industry"] then
+if ei_settings.ei_quartz_enabled or ci_ore_crushing then
 	data:extend(
 	{
 		{

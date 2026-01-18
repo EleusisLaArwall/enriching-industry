@@ -1,7 +1,7 @@
 local ei_defaults = {
 -- ================================================== General settings
-	ei_selection_setup = "ci",
-	ei_ci_overwrite = false,
+	ei_selection_setup = "default",
+	ei_ci_overwrite = true,
 	ei_productivity_precursor = false,
 -- ================================================== Stone, Sand, Glass & Quartz
 	ei_stone_crush_bonus_precursor = 0.05,

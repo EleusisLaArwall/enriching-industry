@@ -1,76 +1,39 @@
 local ei_defaults = require ("ei-defaults")
+local ei_full_control = not mods["enriching-industry-full-control"]
 
 data:extend({
--- ================================================== Selection
+-- ================================================== General settings
 	{
 		type = "string-setting",
 		name = "ei-selection-setup",
 		setting_type = "startup",
-		default_value = "ci",
-		allowed_values = { "custom", "ci", "small", "prec" },
-		order = "c[settings]-c-e"
-	},
-	{
-		type = "string-setting",
-		name = "ei-selection-bonus-direct",
-		setting_type = "startup",
-		default_value = "50",
-		allowed_values = { "custom", "0", "10", "25", "50", "75", "100" },
-		order = "c[settings]-c-f"
-	},
-	{
-		type = "string-setting",
-		name = "ei-selection-bonus-primprec",
-		setting_type = "startup",
-		default_value = "5",
-		allowed_values = { "custom", "0", "1", "2", "5", "10", "25", "50"},
-		order = "c[settings]-f"
-	},
-	{
-		type = "string-setting",
-		name = "ei-selection-bonus-secoprec",
-		setting_type = "startup",
-		default_value = "2",
-		allowed_values = { "custom", "0", "1", "2", "5", "10", "25"},
-		order = "c[settings]-i-c"
-	},
-	{
-		type = "string-setting",
-		name = "ei-selection-byproduct-metal",
-		setting_type = "startup",
-		default_value = "50",
-		allowed_values = { "custom", "0", "10", "25", "50", "75", "100" },
-		order = "c[settings]-l"
-	},
--- ================================================== General settings
-	{
-		type = "bool-setting",
-		name = "ei-ci-overwrite",
-		setting_type = "startup",
---		default_value = false,
-		default_value = ei_defaults.ei_ci_overwrite,
+--		default_value = "default",
+		default_value = ei_defaults.ei_selection_setup,
+		allowed_values = { "default", "small", "decreasing", "prec", "custom" },
 		order = "c[settings]-c-c"
 	},
 	{
 		type = "bool-setting",
-		name = "ei-productivity-precursor",--	TODO: Enable productivity for CI primprec!
+		name = "ei-ci-overwrite",
+		setting_type = "startup",
+--		default_value = true,
+		default_value = ei_defaults.ei_ci_overwrite,
+		order = "c[settings]-c-d"
+	},
+	{
+		type = "bool-setting",
+		name = "ei-productivity-precursor",
 		setting_type = "startup",
 --		default_value = false,
 		default_value = ei_defaults.ei_productivity_precursor,
 		order = "c[settings]-i-f"
 	},
--- 	{
--- 		type = "bool-setting",
--- 		name = "ei-secoprec-productivity",
--- 		setting_type = "startup",
--- 		default_value = false,
--- 		order = "c[settings]-i-g"
--- 	},
 -- ================================================== Stone, Sand, Glass & Quartz
 	{
 		type = "int-setting",
 		name = "ei-stone-crush-bonus-precursor",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_stone_crush_bonus_precursor * 100,
 		minimum_value = 0,
@@ -81,6 +44,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-stone-wash-bonus-direct",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_stone_wash_bonus_direct * 100,
 		minimum_value = 0,
@@ -91,6 +55,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-stone-wash-bonus-primprec",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_stone_wash_bonus_primprec * 100,
 		minimum_value = 0,
@@ -101,6 +66,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-stone-wash-bonus-secoprec",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 2,
 		default_value = ei_defaults.ei_stone_wash_bonus_secoprec * 100,
 		minimum_value = 0,
@@ -113,6 +79,7 @@ data:extend({
 		name = "ei-crush-bonus-direct",
 --		name = "ei-crush-extra",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_crush_bonus_direct * 100,
 		minimum_value = 0,
@@ -124,6 +91,7 @@ data:extend({
 		name = "ei-crush-bonus-precursor",
 --		name = "ei-primprec-crush-extra",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_crush_bonus_precursor * 100,
 		minimum_value = 0,
@@ -135,6 +103,7 @@ data:extend({
 		name = "ei-crush-byprod-sand",
 --		name = "ei-byproduct-crush-extra",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 2,
 		default_value = ei_defaults.ei_crush_byprod_sand * 100,
 		minimum_value = 0,
@@ -146,6 +115,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-direct",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_wash_bonus_direct * 100,
 		minimum_value = 0,
@@ -156,6 +126,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-primprec",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_wash_bonus_primprec * 100,
 		minimum_value = 0,
@@ -166,6 +137,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-wash-bonus-secoprec",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 2,
 		default_value = ei_defaults.ei_wash_bonus_secoprec * 100,
 		minimum_value = 0,
@@ -177,6 +149,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-sulfuric-acid",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_leach_sulfuric_acid,
 		minimum_value = 1,
@@ -187,6 +160,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-bonus-direct",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_leach_bonus_direct * 10,
 		minimum_value = 0,
@@ -197,6 +171,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-leach-bonus-primprec",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_leach_bonus_primprec * 100,
 		minimum_value = 0,
@@ -208,6 +183,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-recry-bonus-direct",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_recry_bonus_direct * 100,
 		minimum_value = 0,
@@ -218,6 +194,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-recry-byprod",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 50,
 		default_value = ei_defaults.ei_recry_byprod * 100,
 		minimum_value = 0,
@@ -228,6 +205,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-recrystall",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 35,
 		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_recrystall * 100,
 		minimum_value = 0,
@@ -239,6 +217,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-tailfilt",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 2,
 		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_tailfilt * 100,
 		minimum_value = 0,
@@ -249,6 +228,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sulfur-tailrepr",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_nonmetal_byproduct_sulfur_tailrepr * 100,
 		minimum_value = 0,
@@ -259,6 +239,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-sand",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 5,
 		default_value = ei_defaults.ei_nonmetal_byproduct_sand * 100,
 		minimum_value = 0,
@@ -269,6 +250,7 @@ data:extend({
 		type = "int-setting",
 		name = "ei-nonmetal-byproduct-stone",
 		setting_type = "startup",
+		hidden = ei_full_control,
 --		default_value = 2,
 		default_value = ei_defaults.ei_nonmetal_byproduct_stone * 100,
 		minimum_value = 0,
