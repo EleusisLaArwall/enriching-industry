@@ -8,6 +8,7 @@ local ei_defaults = {
 	ei_stone_wash_bonus_direct = 0.5,
 	ei_stone_wash_bonus_primprec = 0.05,
 	ei_stone_wash_bonus_secoprec = 0.02,
+	ei_stone_wash_in_sand_amount = 1,
 -- ================================================== Crushing
 	ei_crush_bonus_direct = 0.5,
 	ei_crush_bonus_precursor = 0.05,
@@ -29,6 +30,7 @@ local ei_defaults = {
 	ei_nonmetal_byproduct_sulfur_tailrepr = 0.05,
 	ei_nonmetal_byproduct_sand = 0.05,
 	ei_nonmetal_byproduct_stone = 0.02,
+	ei_concrete_from_tailing_in_sand_amount = 2,
 }
 
 return ei_defaults

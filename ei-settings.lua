@@ -65,6 +65,7 @@ if ei_settings.ei_selection_setup == "custom" then
 	ei_settings.ei_stone_wash_bonus_direct = settings.startup["ei-stone-wash-bonus-direct"].value * 0.01
 	ei_settings.ei_stone_wash_bonus_primprec = settings.startup["ei-stone-wash-bonus-primprec"].value * 0.01
 	ei_settings.ei_stone_wash_bonus_secoprec = settings.startup["ei-stone-wash-bonus-secoprec"].value * 0.01
+	ei_settings.ei_stone_wash_in_sand_amount = settings.startup["ei-stone-wash-in-sand-amount"].value
 	ei_settings.ei_crush_bonus_direct = settings.startup["ei-crush-bonus-direct"].value * 0.01
 	ei_settings.ei_crush_bonus_precursor = settings.startup["ei-crush-bonus-precursor"].value * 0.01
 	ei_settings.ei_crush_byprod_sand = settings.startup["ei-crush-byprod-sand"].value * 0.01
@@ -81,6 +82,7 @@ if ei_settings.ei_selection_setup == "custom" then
 	ei_settings.ei_nonmetal_byproduct_sulfur_tailrepr = settings.startup["ei-nonmetal-byproduct-sulfur-tailrepr"].value * 0.01
 	ei_settings.ei_nonmetal_byproduct_sand = settings.startup["ei-nonmetal-byproduct-sand"].value * 0.01
 	ei_settings.ei_nonmetal_byproduct_stone = settings.startup["ei-nonmetal-byproduct-stone"].value * 0.01
+	ei_settings.ei_concrete_from_tailing_in_sand_amount = settings.startup["ei-concrete-from-tailing-in-sand-amount"].value
 end
 
 if ei_settings.ei_stone_crush_bonus_precursor > 0.1  or ei_settings.ei_stone_wash_bonus_primprec > 0.1 or ei_settings.ei_stone_wash_bonus_secoprec > 0.1 or ei_settings.ei_crush_bonus_precursor > 0.1 or ei_settings.ei_wash_bonus_primprec > 0.1 or ei_settings.ei_wash_bonus_secoprec > 0.1 or ei_settings.ei_leach_bonus_primprec > 0.1 then

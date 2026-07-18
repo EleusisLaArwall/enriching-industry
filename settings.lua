@@ -73,6 +73,17 @@ data:extend({
 		maximum_value = 25,
 		order = "x[fc-settings]-c[ssgq]-f[wash]-i"
 	},
+	{
+		type = "int-setting",
+		name = "ei-stone-wash-in-sand-amount",
+		setting_type = "startup",
+		hidden = ei_full_control,
+--		default_value = 1,
+		default_value = ei_defaults.ei_stone_wash_in_sand_amount,
+		minimum_value = 1,
+		maximum_value = 99,
+		order = "x[fc-settings]-c[ssgq]-f[wash]-l"
+	},
 -- ================================================== Crushing
 	{
 		type = "int-setting",
@@ -256,6 +267,17 @@ data:extend({
 		minimum_value = 0,
 		maximum_value = 10,
 		order = "x[fc-settings]-u[tailing-slurry]-g[stone]"
+	},
+	{
+		type = "int-setting",
+		name = "ei-concrete-from-tailing-in-sand-amount",
+		setting_type = "startup",
+		hidden = ei_full_control,
+--		default_value = 2,
+		default_value = ei_defaults.ei_concrete_from_tailing_in_sand_amount,
+		minimum_value = 0,
+		maximum_value = 99,
+		order = "x[fc-settings]-u[tailing-slurry]-i[sand]"
 	},
 })
 
