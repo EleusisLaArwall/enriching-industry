@@ -50,8 +50,8 @@ if ci_ore_crushing then
 	end
 -- Add secondary metal byproduct to recrystallization if sec. bonus > 0
 	if ei_settings.ei_recry_byprod > 0 then
-		frep.add_result("ei-enriched-iron-ore-recrystallization", {type="item", name="ei-enriched-copper-ore", amount=1, probability=ei_settings.ei_recry_byprod})
-		frep.add_result("ei-enriched-copper-ore-recrystallization", {type="item", name="ei-enriched-iron-ore", amount=1, probability=ei_settings.ei_recry_byprod})
+		frep.add_result("ei-enriched-iron-ore-recrystallization", {type="item", name="ei-enriched-copper-ore", amount=1, independent_probability=ei_settings.ei_recry_byprod})
+		frep.add_result("ei-enriched-copper-ore-recrystallization", {type="item", name="ei-enriched-iron-ore", amount=1, independent_probability=ei_settings.ei_recry_byprod})
 	end
 -- Add sulfur after secondary metal to recrystallization
 	if ei_settings.ei_nonmetal_byproduct_sulfur_recrystall > 0 then

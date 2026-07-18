@@ -76,7 +76,7 @@ if not EnrichingIndustry then
 				type = "item",
 				name = item_name,
 				amount = amount,
-				probability = probability,
+				independent_probability = probability,
 				ignored_by_stats = not allow_productivity and amount or nil,
 				ignored_by_productivity = not allow_productivity and amount or nil,
 				show_details_in_recipe_tooltip = false
