@@ -1,5 +1,5 @@
 local ei_defaults = require ("ei-defaults")
-local ei_full_control = not mods["enriching-industry-full-control"]
+local ei_full_control = not mods["full-control"]
 
 data:extend({
 -- ================================================== General settings
