@@ -8,6 +8,7 @@
 	"factorio_version": "2.1",
 	"dependencies": [
 		"base >= 1.0",
+		"? full-control",
 		"? space-age",
 		"? aai-industry",
 		"crushing-industry"
