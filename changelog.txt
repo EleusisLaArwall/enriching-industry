@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 03. 10. 2025
+  Bugfixes:
+    - Fix a crash when crushed coal is disabled (Thank you KamiUnitY!)
+  Major Features:
+    - Reworked Mod Settings
+    - Install "Full Control" to access all Mod Settings
+  Info:
+    - I suggest to start a new game because I've changed a lot under the hood. Please report any issues to the factorio mod portal.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 11. 12. 2025
   Major Features:
