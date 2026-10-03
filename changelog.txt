@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 03. 10. 2025
+  Bugfixes:
+    - Added item sounds to various resources (Thank you KamiUnitY!)
+    - Added the correct order-string to glass-from-quartz recipe (Thank you KamiUnitY!)
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 03. 10. 2025
   Bugfixes:
