@@ -5,6 +5,7 @@ local ei_settings = require ("ei-settings")
 local ci_glass = settings.startup["crushing-industry-glass"].value
 local ci_ore_crushing = settings.startup["crushing-industry-ore"].value
 local ci_byproducts = settings.startup["crushing-industry-byproducts"].value
+local ci_coal_crushing = settings.startup["crushing-industry-coal"].value
 
 -- Stone crushing byproduct overwrite
 --if ci_glass then
@@ -79,7 +80,7 @@ if ci_ore_crushing then
 		frep.scale_ingredient("molten-copper", "ei-enriched-copper-ore", {amount=4/3})
 		frep.modify_ingredient("holmium-plate", "holmium-solution", {type="item", name="ei-enriched-holmium", amount=1})
 		if ci_byproducts then
-			frep.add_result("ei-enriched-tungsten-ore", EnrichingIndustry.make_washing_byproduct("crushed-coal", EnrichingIndustry.FLAVOR_BYPRODUCT), false)
+			frep.add_result("ei-enriched-tungsten-ore", EnrichingIndustry.make_washing_byproduct(ci_coal_crushing and "crushed-coal" or "coal", EnrichingIndustry.FLAVOR_BYPRODUCT), false)
 		end
 	end
 end
