@@ -58,6 +58,7 @@ if ei_settings.ei_glass_enabled then
 			localised_name = {"recipe-name.ei-quartz-smelting"},
 			icons = EnrichingIndustry.make_smelting_icons("ei-quartz", "glass"),
 			categories = {"smelting"},
+			order = "a[smelting]-d[glass]-c[quartz]",
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,

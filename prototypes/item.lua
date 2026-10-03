@@ -1,4 +1,4 @@
--- local item_sounds = require("__base__.prototypes.item_sounds")
+local item_sounds = require("__base__.prototypes.item_sounds")
 
 -- Crushing Industry Mod Settings
 local ci_glass = settings.startup["crushing-industry-glass"].value
@@ -21,6 +21,9 @@ data:extend(
 		},
 		subgroup = "raw-resource",
 		order = "d[stone]-d[enriched]",
+		inventory_move_sound = item_sounds.resource_inventory_move,
+		pick_sound = item_sounds.resource_inventory_pickup,
+		drop_sound = item_sounds.resource_inventory_move,
 		hidden = not ci_glass and not mods["aai-industry"],
 		stack_size = 50,
 		weight = 2 * kg
@@ -45,6 +48,9 @@ data:extend(
 		},
 		subgroup = "raw-resource",
 		order = "e[iron-ore]-d[enriched]",
+		inventory_move_sound = item_sounds.resource_inventory_move,
+		pick_sound = item_sounds.resource_inventory_pickup,
+		drop_sound = item_sounds.resource_inventory_move,
 		hidden = not ci_ore_crushing,
 		stack_size = 100,
 		weight = 2 * kg
@@ -64,6 +70,9 @@ data:extend(
 		},
 		subgroup = "raw-resource",
 		order = "f[copper-ore]-d[enriched]",
+		inventory_move_sound = item_sounds.resource_inventory_move,
+		pick_sound = item_sounds.resource_inventory_pickup,
+		drop_sound = item_sounds.resource_inventory_move,
 		hidden = not ci_ore_crushing,
 		stack_size = 100,
 		weight = 2 * kg
@@ -89,6 +98,9 @@ if mods["space-age"] then
 			},
 			subgroup = "vulcanus-processes",
 			order = "c[tungsten]-a[tungsten-ore]-d[enriched]",
+			inventory_move_sound = item_sounds.resource_inventory_move,
+			pick_sound = item_sounds.resource_inventory_pickup,
+			drop_sound = item_sounds.resource_inventory_move,
 			hidden = not ci_ore_crushing,
 			stack_size = 100,
 			default_import_location = "vulcanus",
@@ -109,6 +121,9 @@ if mods["space-age"] then
 			},
 			subgroup = "fulgora-processes",
 			order = "b[holmium]-a[holmium-ore]-d[enriched]",
+			inventory_move_sound = item_sounds.resource_inventory_move,
+			pick_sound = item_sounds.resource_inventory_pickup,
+			drop_sound = item_sounds.resource_inventory_move,
 			hidden = not ci_ore_crushing,
 			stack_size = 100,
 			default_import_location = "fulgora",
