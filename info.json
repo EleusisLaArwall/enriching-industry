@@ -1,11 +1,12 @@
 {
 	"name": "enriching-industry",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"title": "Enriching Industry",
 	"author": "EleusisLaArwall",
 	"homepage": "",
 	"description": "Adds further ore enrichment to Crushing Industry for even more yield at the cost of increased complexity. Some might call it win-win.",
 	"factorio_version": "2.1",
+	"spoiling_required": true,
 	"dependencies": [
 		"base >= 1.0",
 		"? full-control",
