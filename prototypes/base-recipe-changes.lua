@@ -74,10 +74,12 @@ if ci_ore_crushing then
 	if mods["space-age"] then
 		frep.replace_ingredient("tungsten-plate", "crushed-tungsten-ore", "ei-enriched-tungsten-ore")
 	--	frep.scale_ingredient("tungsten-plate", "ei-enriched-tungsten-ore", {amount=1.5})
-		frep.replace_ingredient("iron-ore-melting", "crushed-iron-ore", "ei-enriched-iron-ore")
-		frep.scale_ingredient("iron-ore-melting", "ei-enriched-iron-ore", {amount=4/3})
-		frep.replace_ingredient("copper-ore-melting", "crushed-copper-ore", "ei-enriched-copper-ore")
-		frep.scale_ingredient("copper-ore-melting", "ei-enriched-copper-ore", {amount=4/3})
+		if ei_settings.ei_metal_melting_ingredient_factor > 0 then
+			frep.replace_ingredient("iron-ore-melting", "crushed-iron-ore", "ei-enriched-iron-ore")
+			frep.scale_ingredient("iron-ore-melting", "ei-enriched-iron-ore", {amount=4*ei_settings.ei_metal_melting_ingredient_factor/300})
+			frep.replace_ingredient("copper-ore-melting", "crushed-copper-ore", "ei-enriched-copper-ore")
+			frep.scale_ingredient("copper-ore-melting", "ei-enriched-copper-ore", {amount=4*ei_settings.ei_metal_melting_ingredient_factor/300})
+		end
 		frep.modify_ingredient("holmium-plate", "holmium-solution", {type="item", name="ei-enriched-holmium", amount=1})
 		if ci_byproducts then
 			frep.add_result("ei-enriched-tungsten-ore", EnrichingIndustry.make_washing_byproduct(ci_coal_crushing and "crushed-coal" or "coal", EnrichingIndustry.FLAVOR_BYPRODUCT), false)

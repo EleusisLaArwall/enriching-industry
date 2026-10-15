@@ -300,6 +300,15 @@ if mods["space-age"] then
 			minimum_value = 0,
 			maximum_value = 100,
 			order = "k[space-age]-g"
+		},
+		{
+			type = "int-setting",
+			name = "ei-metal-melting-ingredient-factor",
+			setting_type = "startup",
+			default_value = ei_defaults.ei_metal_melting_ingredient_factor,
+			minimum_value = 0,
+			maximum_value = 1000,
+			order = "k[space-age]-h"
 		}
 	})
 end

@@ -12,6 +12,10 @@ ei_settings.ei_productivity_precursor = settings.startup["ei-productivity-precur
 ei_settings.ei_quartz_enabled = false
 ei_settings.ei_glass_enabled = false
 
+if mods["space-age"] then
+	ei_settings.ei_metal_melting_ingredient_factor = settings.startup["ei-metal-melting-ingredient-factor"].value
+end
+
 if ci_glass or mods["space-age"] or (mods["aai-industry"] and not mods["Krastorio2"]) then
 	ei_settings.ei_quartz_enabled = true
 end

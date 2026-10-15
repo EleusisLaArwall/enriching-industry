@@ -31,6 +31,8 @@ local ei_defaults = {
 	ei_nonmetal_byproduct_sand = 0.05,
 	ei_nonmetal_byproduct_stone = 0.02,
 	ei_concrete_from_tailing_in_sand_amount = 2,
+-- ================================================== Space Age
+	ei_metal_melting_ingredient_factor = 100,
 }
 
 return ei_defaults
